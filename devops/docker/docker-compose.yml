@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+
+  postgres:
+    container_name: noteKeep-postgres
+    image: "postgres:alpine"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: 'noteKeep'
+      POSTGRES_PASSWORD: 'noteKeep'
+    volumes:
+      - ../../artifacts/postgres:/var/lib/postgresql/data/
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge
